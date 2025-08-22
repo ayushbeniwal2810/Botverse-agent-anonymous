@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - Anonymous University Reporting Assistant</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom gradient for the hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #301934 0%, #483D8B 100%);
+        }
+
+        /* Subtle animation for interactive elements */
+        .hover-lift {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Chat Modal Animations and Styling */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes typing {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-3px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .typing-dot {
+            animation: typing 1s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .modal-header-gradient {
+            background: linear-gradient(135deg, #483D8B 0%, #301934 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Shield Icon for Security -->
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 20.944a12.02 12.02 0 009 2.944a12.02 12.02 0 009-2.944a12.02 12.02 0 00-2.382-8.944z">
+                    </path>
+                </svg>
+                <h1 class="text-2xl font-bold text-gray-800">AURA</h1>
+            </div>
+            <a href="#how-it-works" class="hidden md:inline text-gray-600 hover:text-blue-600 transition-colors">How It
+                Works</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient text-center py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">Have a Concern?</h2>
+                <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
+                    Voice your feedback or report an issue on campus with complete confidence. Our AI-powered system
+                    ensures your submission is structured, effective, and **100% anonymous**.
+                </p>
+                <div class="mt-8">
+                    <!-- This button would typically open the chat interface -->
+                    <a href="#" id="start-chat-btn"
+                        class="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-blue-700 transition-all transform hover:scale-105">
+                        Start an Anonymous Conversation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">A System Built on Trust</h3>
+                    <p class="text-gray-600 mt-2">We designed this platform with your privacy as our top priority.</p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="grid md:grid-cols-2 gap-8 text-center max-w-4xl">
+                        <!-- Feature 1: Anonymity -->
+                        <div class="bg-gray-50 p-8 rounded-xl shadow-md hover-lift">
+                            <div
+                                class="flex items-center justify-center h-16 w-16 bg-blue-100 text-blue-600 rounded-full mx-auto mb-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2">Guaranteed Anonymity</h4>
+                            <p class="text-gray-600">Your identity is never logged or linked to your submission. Our
+                                system is technically designed to protect you.</p>
+                        </div>
+                        <!-- Feature 2: AI-Powered -->
+                        <div class="bg-gray-50 p-8 rounded-xl shadow-md hover-lift">
+                            <div
+                                class="flex items-center justify-center h-16 w-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2">AI-Powered Structuring</h4>
+                            <p class="text-gray-600">Our AI assistant helps you structure your complaint, making it
+                                clear, concise, and actionable for the administration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">A Simple and Secure Process</h3>
+                    <p class="text-gray-600 mt-2">Follow these easy steps.</p>
+                </div>
+                <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0">
+                    <!-- Step 1 -->
+                    <div class="text-center max-w-xs">
+                        <div class="relative">
+                            <div
+                                class="flex items-center justify-center h-24 w-24 bg-white text-blue-600 border-4 border-blue-200 rounded-full mx-auto text-4xl font-bold">
+                                1</div>
+                        </div>
+                        <h4 class="text-xl font-semibold mt-4 mb-2">Start the Chat</h4>
+                        <p class="text-gray-600">Begin a conversation with our secure chatbot. It will guide you through
+                            a few simple questions to understand your concern.</p>
+                    </div>
+                    <!-- Connector -->
+                    <div class="hidden md:block h-1 w-24 bg-gray-300 rounded-full"></div>
+                    <!-- Step 2 -->
+                    <div class="text-center max-w-xs">
+                        <div
+                            class="flex items-center justify-center h-24 w-24 bg-white text-blue-600 border-4 border-blue-200 rounded-full mx-auto text-4xl font-bold">
+                            2</div>
+                        <h4 class="text-xl font-semibold mt-4 mb-2">Submit Anonymously</h4>
+                        <p class="text-gray-600">Review your structured complaint. Once you confirm, it's sent directly
+                            to the concerned authority without any of your personal data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 SRM IST Delhi NCR.</p>
+            <p class="text-sm text-gray-400 mt-2">AURA - A secure platform for student feedback.</p>
+        </div>
+    </footer>
+
+    <!-- Mock Chat Modal -->
+    <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md m-4 flex flex-col">
+            <div class="p-4 border-b flex justify-between items-center modal-header-gradient text-white rounded-t-lg">
+                <h5 class="text-lg font-bold">AURA Chat</h5>
+                <button id="close-chat-btn" class="text-white text-2xl leading-none hover:opacity-75">&times;</button>
+            </div>
+            <div id="chat-body" class="p-6 h-96 overflow-y-auto space-y-4">
+                <!-- Initial Bot Message -->
+                <div class="chat-message">
+                    <div class="flex items-end">
+                        <div class="bg-blue-500 text-white rounded-lg py-2 px-4 max-w-xs rounded-bl-none">
+                            Welcome to AURA. Your identity is secure. Please select the category of your concern.
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Buttons -->
+                <div id="category-buttons" class="chat-message flex flex-wrap gap-2">
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Academics</button>
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Infrastructure</button>
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Hostel
+                        & Mess</button>
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Faculty
+                        & Courses</button>
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Library</button>
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Transport</button>
+                    <button
+                        class="category-btn bg-gray-200 text-gray-800 rounded-full py-2 px-4 hover:bg-blue-200 transition-colors">Other</button>
+                </div>
+            </div>
+            <!-- Chat Input Area -->
+            <div id="chat-input-container" class="p-4 border-t bg-gray-50 rounded-b-lg hidden">
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="chat-input" placeholder="Type here..."
+                        class="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="send-btn"
+                        class="bg-blue-600 text-white rounded-full p-3 hover:bg-blue-700 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </button>
+                    <button id="skip-btn" class="text-sm text-gray-600 hover:text-black">Skip for now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the mock chat modal
+        const startChatBtn = document.getElementById('start-chat-btn');
+        const chatModal = document.getElementById('chat-modal');
+        const closeChatBtn = document.getElementById('close-chat-btn');
+        const chatBody = document.getElementById('chat-body');
+        const categoryButtonsContainer = document.getElementById('category-buttons');
+        const chatInputContainer = document.getElementById('chat-input-container');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const skipBtn = document.getElementById('skip-btn');
+
+        let chatState = 'idle'; // States: idle, awaiting_email, awaiting_details
+
+        const openModal = () => chatModal.classList.remove('hidden');
+        const closeModal = () => chatModal.classList.add('hidden');
+
+        startChatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+
+        closeChatBtn.addEventListener('click', closeModal);
+        chatModal.addEventListener('click', (e) => {
+            if (e.target === chatModal) closeModal();
+        });
+
+        // Interactive Chat Demo Logic
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', () => handleCategorySelection(button.textContent));
+        });
+
+        function handleCategorySelection(category) {
+            categoryButtonsContainer.classList.add('hidden');
+
+            displayUserMessage(category);
+            showTypingIndicator();
+
+            setTimeout(() => {
+                hideTypingIndicator();
+                displayBotMessage("Thank you. If you'd like to receive status updates, please provide your email. It will be kept anonymous and separate from your report.");
+                chatState = 'awaiting_email';
+                showInputContainer('email');
+            }, 1500);
+        }
+
+        function handleEmailStep(email = null) {
+            if (email) {
+                displayUserMessage("My email is " + email);
+            } else {
+                displayUserMessage("I'd like to skip.");
+            }
+
+            chatInputContainer.classList.add('hidden');
+            showTypingIndicator();
+
+            setTimeout(() => {
+                hideTypingIndicator();
+                displayBotMessage("Understood. Could you please describe your issue in detail now?");
+                chatState = 'awaiting_details';
+                showInputContainer('details');
+            }, 1500);
+        }
+
+        function handleDetailsStep(details) {
+            displayUserMessage(details);
+            chatInputContainer.classList.add('hidden');
+            showTypingIndicator();
+
+            setTimeout(() => {
+                hideTypingIndicator();
+                displayBotMessage("Thank you for your feedback. Your report has been submitted anonymously.");
+                chatState = 'idle';
+            }, 1500);
+        }
+
+        sendBtn.addEventListener('click', () => {
+            const input = chatInput.value.trim();
+            if (input === '') return;
+
+            if (chatState === 'awaiting_email') {
+                handleEmailStep(input);
+            } else if (chatState === 'awaiting_details') {
+                handleDetailsStep(input);
+            }
+            chatInput.value = '';
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendBtn.click();
+        });
+
+        skipBtn.addEventListener('click', () => {
+            if (chatState === 'awaiting_email') {
+                handleEmailStep(null);
+            }
+        });
+
+        // --- UI Helper Functions ---
+
+        function showInputContainer(type) {
+            if (type === 'email') {
+                chatInput.type = 'email';
+                chatInput.placeholder = 'Enter your email...';
+                skipBtn.classList.remove('hidden');
+            } else {
+                chatInput.type = 'text';
+                chatInput.placeholder = 'Describe your issue here...';
+                skipBtn.classList.add('hidden');
+            }
+            chatInputContainer.classList.remove('hidden');
+            chatInput.focus();
+        }
+
+        function displayUserMessage(text) {
+            const html = `<div class="chat-message"><div class="flex items-end justify-end"><div class="bg-gray-800 text-white rounded-lg py-2 px-4 max-w-xs rounded-br-none">${text}</div></div></div>`;
+            chatBody.insertAdjacentHTML('beforeend', html);
+            scrollToBottom();
+        }
+
+        function displayBotMessage(text) {
+            const html = `<div class="chat-message"><div class="flex items-end"><div class="bg-blue-500 text-white rounded-lg py-2 px-4 max-w-xs rounded-bl-none">${text}</div></div></div>`;
+            chatBody.insertAdjacentHTML('beforeend', html);
+            scrollToBottom();
+        }
+
+        function showTypingIndicator() {
+            const html = `<div id="typing-indicator" class="chat-message"><div class="flex items-end"><div class="bg-gray-200 rounded-lg p-3 max-w-xs rounded-bl-none"><div class="flex space-x-1"><div class="w-2 h-2 bg-gray-500 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-500 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-500 rounded-full typing-dot"></div></div></div></div></div>`;
+            chatBody.insertAdjacentHTML('beforeend', html);
+            scrollToBottom();
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typing-indicator')?.remove();
+        }
+
+        function scrollToBottom() {
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+
+</body>
+
+</html>
